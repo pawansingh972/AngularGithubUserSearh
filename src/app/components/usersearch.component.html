@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark">
+      <a class="navbar-brand" href="#">GitHub</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="input-group header-search">
+                  <div class="input-group-prepend">
+                        <span class="input-group-text">Github Search</span>
+                  </div>
+                  <input #searchKey type="text" class="form-control" placeholder="Search User Name" value="" [(ngModel)]="searchText" (keyup)="searchUsers()">
+            </div>
+      </div>
+</nav>
+
+<div class="container px-1 mt-4">
+      <div class="empty-username" *ngIf="!searchText">
+            <div class="">
+                  <h5>Search any GitHub user</h5>
+                  <p class="">Please enter a <b>username to search</b>.</p>
+            </div>
+      
+      </div>
+
+      <div class="user-notfound"  *ngIf="searchText && (usersNotFound || (searchResults && !searchResults.total_count))">
+            <div class="">
+                  <h5>User Profile(s) not found.</h5>
+                  <p class="">Please enter a different <b>username</b>.</p>
+            </div>
+      </div>
+
+      <div class="mb-2" *ngIf="searchText && searchResults && searchResults.total_count"> Total Results :: {{searchResults.total_count}}</div>
+      <div class="row users" *ngIf="searchText && searchResults && searchResults.items && searchResults.items.length">
+            <div *ngFor="let user of searchResults.items" class="user-item d-flex mb-3 ml-2">
+                  <a routerLink="/userdetails/{{user.login}}" target="_blank">
+                        <div class="card">
+                              <img class="card-img-top" src="{{user.avatar_url}}" alt="Avatar">
+                              <div class="card-body">
+                                    <a routerLink="/userdetails/{{user.login}}" target="_blank">
+                                          <h4 class="card-title">{{user.login}}</h4>
+                                    </a>
+                                    <!-- <a href="#" class="btn btn-primary">See Profile</a> -->
+                              </div>
+                        </div>
+                  </a>            
+                  <!-- <span>login :: {{user.login}} </span> -->
+            </div>
+      </div>
+</div>

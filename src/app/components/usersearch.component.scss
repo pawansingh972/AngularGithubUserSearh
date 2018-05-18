@@ -1,0 +1,65 @@
+.header-search {
+      color: hsla(0,0%,100%,.75);
+      border-right-color: #282e34;
+      font-size: 13px; 
+      width: 800px;
+      .form-control, .input-group-text {
+          font-size: 13px;
+      }
+      .input-group-prepend {
+          .input-group-text {
+              background-color: rgba(255, 255, 255, 0.125);
+              border: none;
+              color: #fff;        
+          }
+      }
+      input {
+          background-color: rgba(255,255,255,0.125);
+          border: none;
+          color: #fff;
+          ::placeholder {
+              color: red;
+              opacity: 1; /* Firefox */
+          }
+          
+          :-ms-input-placeholder { /* Internet Explorer 10-11 */
+             color: red;
+          }
+          
+          ::-ms-input-placeholder { /* Microsoft Edge */
+             color: red;
+          }
+      }
+      input[type="text"]:focus {
+          box-shadow: none;
+          border-color: #ced4da;
+      }
+}
+.empty-username,
+.user-notfound {
+      position: absolute;
+      top: 25%;
+      left: 45%;
+}
+
+.users {
+      .card {
+            width: 260px;
+            height: 325px;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            position: relative;
+            background: #fff;
+            -webkit-box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);
+            box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);
+            border-radius: .375rem;
+            -webkit-transition: all .3s ease;
+            transition: all .3s ease;
+            &:hover {
+                  -webkit-box-shadow: 2px 4px 8px 0 rgba(46,61,73,.2);
+                  box-shadow: 2px 4px 8px 0 rgba(46,61,73,.2);
+                  cursor: pointer;
+            }
+      }
+}
